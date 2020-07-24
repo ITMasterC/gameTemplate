@@ -36,4 +36,4 @@
 	* [***ui_manager***](https://github.com/ITMasterC/gameTemplate/tree/master/assets/scripts/prefabs/level_prefabs)：统一管理关卡、对象池、弹窗的脚本
 * [***scene_Scripts***](https://github.com/ITMasterC/gameTemplate/tree/master/assets/scripts/scene_Scripts/loadingScene)：
 	* [***loadingScene***](https://github.com/ITMasterC/gameTemplate/tree/master/assets/scripts/scene_Scripts/loadingScene)：游戏初始化加载场景
-* [***commonFun***](https://github.com/ITMasterC/gameTemplate/tree/master/assets/scripts/commonFun)：存放一下公共的方法
+* [***commonFun***](https://github.com/ITMasterC/gameTemplate/tree/master/assets/scripts/commonFun)：存放一些公共的方法
