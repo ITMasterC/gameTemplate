@@ -14,7 +14,7 @@
 <br>
 
 ## 3 - [scripts](https://github.com/ITMasterC/gameTemplate/tree/master/assets/scripts) : 脚本文件存放目录。
-* [***appListNode***](https://github.com/ITMasterC/gameTemplate/tree/master/assets/scripts/appListNode)：
+* [***appListNode***](https://github.com/ITMasterC/gameTemplate/tree/master/assets/scripts/appListNode)：微信跳转组件关联的脚本（可忽略）<br>
 * [***con_data***](https://github.com/ITMasterC/gameTemplate/tree/master/assets/scripts/con_data)：
 * [***con_Scripts***](https://github.com/ITMasterC/gameTemplate/tree/master/assets/scripts/con_Scripts)：
 * [***global_con***](https://github.com/ITMasterC/gameTemplate/tree/master/assets/scripts/global_con)：
