@@ -30,10 +30,10 @@
 	* [***moreGameEvent***](https://github.com/ITMasterC/gameTemplate/tree/master/gameTemplatePro/assets/scripts/platfrom/moreGameEvent.js)：头条更多游戏组件，将脚本拖到指定的节点上，会有偏差，需要调整对应的位置大小等信息
 	* [***platfrom_fun***](https://github.com/ITMasterC/gameTemplate/tree/master/gameTemplatePro/assets/scripts/platfrom/platfrom_fun.js)：访问以上脚本的统一入口。
 * [***prefabs***](https://github.com/ITMasterC/gameTemplate/tree/master/gameTemplatePro/assets/scripts/prefabs)：主要的公共组件为：**level_prefabs** 、 **pool_prefabs** 、**ui_manager** 、**win_prefabs**<br>
-	* [***level_prefabs***](https://github.com/ITMasterC/gameTemplate/tree/master/gameTemplatePro/assets/scripts/prefabs/level_prefabs)：关卡实例化脚本
-	* [***pool_prefabs***](https://github.com/ITMasterC/gameTemplate/tree/master/gameTemplatePro/assets/scripts/prefabs/level_prefabs)：预制体加载与实例化脚本
-	* [***win_prefabs***](https://github.com/ITMasterC/gameTemplate/tree/master/gameTemplatePro/assets/scripts/prefabs/win_prefabs)：弹窗预制体资源加载与实例化脚本
-	* [***ui_manager***](https://github.com/ITMasterC/gameTemplate/tree/master/gameTemplatePro/assets/scripts/prefabs/level_prefabs)：统一管理关卡、对象池、弹窗的脚本
+	* [***level_prefabs***](https://github.com/ITMasterC/gameTemplate/tree/master/gameTemplatePro/assets/scripts/prefabs/level_prefabs.js)：关卡实例化脚本
+	* [***pool_prefabs***](https://github.com/ITMasterC/gameTemplate/tree/master/gameTemplatePro/assets/scripts/prefabs/level_prefabs.js)：预制体加载与实例化脚本
+	* [***win_prefabs***](https://github.com/ITMasterC/gameTemplate/tree/master/gameTemplatePro/assets/scripts/prefabs/win_prefabs.js)：弹窗预制体资源加载与实例化脚本
+	* [***ui_manager***](https://github.com/ITMasterC/gameTemplate/tree/master/gameTemplatePro/assets/scripts/prefabs/ui_prefabs.js)：统一管理关卡、对象池、弹窗的脚本
 * [***scene_Scripts***](https://github.com/ITMasterC/gameTemplate/tree/master/gameTemplatePro/assets/scripts/scene_Scripts/loadingScene)：
 	* [***loadingScene***](https://github.com/ITMasterC/gameTemplate/tree/master/gameTemplatePro/assets/scripts/scene_Scripts/loadingScene.js)：游戏初始化加载场景
 * [***commonFun***](https://github.com/ITMasterC/gameTemplate/tree/master/gameTemplatePro/assets/scripts/commonFun.js)：存放一些公共的方法
