@@ -10,6 +10,8 @@ class videoAdEvent {
         this.failCb = undefined;
         this.successCb = undefined;
         this.videoLoad = false;
+        this.autoAgainPlayTimes = 0;
+        this.autoPlayFlag = false;
         this.adId = "";
     }
     // 构造一个广为人知的接口，供用户对该类进行实例化
@@ -48,17 +50,29 @@ class videoAdEvent {
             })
             this.videoAd.onClose(res => {
                 if (res.isEnded) {
-                    if(this.successCb){
+                    if (this.successCb) {
                         this.successCb();
                     }
-                } else {
-                    if(this.failCb){
-                        this.failCb();
+                    if (this.autoAgainPlayTimes == 0 && this.autoPlayFlag) {
+                        this.autoAgainPlayTimes++;
+                        this.successCb = undefined;
+                        this.failCb = undefined;
+                        this.startVideoAd();
+                        return;
                     }
-                    _ui_mager.getNodeByPool("w_tipNode", "观看完整视频才能获得奖励");
+                } else {
+                    if(this.autoPlayFlag && this.autoAgainPlayTimes == 0){
+                        this.autoAgainPlayTimes++;
+                        this.startVideoAd();
+                    }else{
+                        if (this.failCb) {
+                            this.failCb();
+                        }
+                        _ui_mager.getNodeByPool("w_tipNode", "观看完整视频才能获得奖励");
+                        this.successCb = undefined;
+                        this.failCb = undefined;
+                    }
                 }
-                this.successCb = undefined;
-                this.failCb = undefined;
             });
         }
     };

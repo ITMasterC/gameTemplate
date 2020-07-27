@@ -27,12 +27,14 @@ class platfrom_fun {
     }
 
 
-    showAdVideo(successCb, failCb = undefined) {
+    showAdVideo(successCb, failCb = undefined, autoPlayFlag = false) {
         if (!this.ad_videoEvent) {
             _ui_mager.getNodeByPool("w_tipNode", "暂无广告，请稍后再试");
             this.init();
             return;
         }
+        this.ad_videoEvent.autoAgainPlayTimes = 0;
+        this.ad_videoEvent.autoPlayFlag = autoPlayFlag;
         this.ad_videoEvent.successCb = successCb;
         this.ad_videoEvent.failCb = failCb;
         this.ad_videoEvent.startVideoAd();
