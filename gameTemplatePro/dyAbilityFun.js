@@ -19,7 +19,8 @@ class dyAbilityFun {
     }
 
     /* 
-     * 添加到桌面
+     * 添加到桌面 -- 注意适配不同app端 
+     * https://bytedance.feishu.cn/docs/doccnvUnsraQOXfPjn0IHE1azJb
      */
     addShortcut(successCb, failCb) {
         if (tt.addShortcut)
@@ -36,7 +37,8 @@ class dyAbilityFun {
     };
 
     /*
-    * 检查是否存在桌面快捷方式 
+     * 检查是否存在桌面快捷方式 
+     * https://bytedance.feishu.cn/docs/doccnvUnsraQOXfPjn0IHE1azJb
      */
     checkShortcut(successCb, failCb) {
         if (tt.addShortcut)
@@ -54,6 +56,28 @@ class dyAbilityFun {
                     failCb();
                 }
             })
-    },
+    };
+
+    /* 
+     * 关注抖音号  -- 仅抖音端支持
+     * https://bytedance.feishu.cn/docs/doccn1dQ6bztM5wJAv9pgTsYZDc
+     */
+    addAttention(successCb, failCb) {
+        tt.openAwemeUserProfile({
+            success: function (res) {
+                if (res.hasFollowed) {
+                    console.log('-----openAwemeUserProfile---成功关注', res);
+                } else {
+                    console.log('-----openAwemeUserProfile---没有关注', res);
+                }
+            },
+            fail: function (err) {
+                console.log('-----openAwemeUserProfile---api调用失败', err);
+            },
+            complete: function (res) {
+                // console.log('---- open complete, res: ',res)
+            }
+        })
+    };
 }
 window._dy_ability_fun = new dyAbilityFun();

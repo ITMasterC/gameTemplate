@@ -40,3 +40,6 @@
 
 ## 4 - [scripts](https://github.com/ITMasterC/gameTemplate/tree/master/dyAbilityFun.js) : 抖音等平台api能力 -- 通过 _dy_ability_fun.functionName() 相关方式调用。
 * ***showFavoriteGuide***：在小程序内调起关注小程序的引导组件，用于引导用户关注小程序。
+* ***addShortcut***：添加到桌面。
+* ***checkShortcut***：检查是否存在桌面快捷方式。
+* ***addAttention***：关注抖音号  -- 仅抖音端支持。
