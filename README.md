@@ -46,6 +46,6 @@
 * ***getVideoList***：获取通过小游戏发布的视频排行榜。
 * ***getVideoUrls***：获取视频排行榜对应的视频封面图。
 
-## 4 - [reportEvent，事件分析事件](https://github.com/ITMasterC/gameTemplate/tree/master/reportEvent.js) -- 达人视频分析案例 [文档](http://note.youdao.com/noteshare?id=4aae21ba922a6be4e9b98a5bd3e435d0)
+## 5 - [reportEvent，事件分析事件](https://github.com/ITMasterC/gameTemplate/tree/master/reportEvent.js) -- 达人视频分析案例 [文档](http://note.youdao.com/noteshare?id=4aae21ba922a6be4e9b98a5bd3e435d0)
 * **init(author_id, video_id)**: 传入达人id、视频id进行初始化。
 * **reportVideoData(reportName)**：通过 _report_event.reportVideoData("事件名称") 相关方式调用。

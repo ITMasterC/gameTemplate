@@ -13,12 +13,14 @@ class videoAdEvent {
         this.autoAgainPlayTimes = 0;
         this.autoPlayFlag = false;
         this.adId = "";
+        this.isDisable = false;
     }
     // 构造一个广为人知的接口，供用户对该类进行实例化
     static getInstance(adId) {
         if (!this.instance) {
             this.instance = new videoAdEvent();
             this.adId = adId;
+            this.onInitVedio();
         }
         return this.instance;
     }
@@ -29,26 +31,22 @@ class videoAdEvent {
                 adUnitId: this.adId
             });
             this.videoAd.onLoad((err) => {
+                this.videoLoad = true;
                 console.log('---------------window.globalData.comFunVideo 加载成功!')
             });
-            this.videoAd
-                .show()
-                .then(() => {
-                    console.log("广告显示成功");
-                })
-                .catch((err) => {
-                    console.log("广告组件出现问题", err);
-                    // 可以手动加载一次
-                    this.videoAd.load().then(() => {
-                        console.log("手动加载成功");
-                        // 加载成功后需要再显示广告
-                        return this.videoAd.show();
-                    });
-                });
             this.videoAd.onError(err => {
+                this.videoLoad = false;
                 console.log('---------------window.globalData.comFunVideo 加载失败!', err)
             })
             this.videoAd.onClose(res => {
+                this.videoAd.load().then(() => {
+                    console.log("手动加载成功");
+                }).catch((err) => {
+                    console.log("广告组件出现问题", err);
+                    this.videoAd.load().then(() => {
+                        console.log("手动加载成功");
+                    });
+                });
                 if (res.isEnded) {
                     if (this.successCb) {
                         this.successCb();
@@ -79,25 +77,26 @@ class videoAdEvent {
 
 
     startVideoAd = function () {
+        if (this.isDisable) return;
+        this.isDisable = true;
+        setTimeout(() => {
+            this.isDisable = false;
+        }, 800);
         if (cc.sys.platform === cc.sys.WECHAT_GAME) {
-            if (this.videoAd) {
-                this.videoAd
-                    .show()
-                    .then(() => {
-                        console.log("广告显示成功");
-                    })
-                    .catch((err) => {
-                        console.log("广告组件出现问题", err);
-                        // 可以手动加载一次
-                        this.videoAd.load().then(() => {
-                            console.log("手动加载成功");
-                            // 加载成功后需要再显示广告
-                            return this.videoAd.show();
-                        });
-                    });
+            if (this.videoLoad) {
+                this.videoAd.show();
             } else {
-                _ui_mager.getNodeByPool("w_tipNode", "暂无广告,请稍后再试");
-                this.onInitVedio();
+                if(!this.autoPlayFlag)window._ui_mager.getNodeByPool("w_tipNode", "广告获取失败,请重试");
+                this.videoAd.load().then(() => {
+                    console.log("手动加载成功");
+                    if(this.autoPlayFlag) return this.videoAd.show();
+                }).catch((err) => {
+                    console.log("广告组件出现问题", err);
+                    this.videoAd.load().then(() => {
+                        console.log("手动加载成功");
+                        if(this.autoPlayFlag) return this.videoAd.show();
+                    });
+                });
             }
         } else {
             _ui_mager.getNodeByPool("w_tipNode", "暂无广告,请稍后再试");
