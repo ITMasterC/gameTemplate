@@ -79,5 +79,66 @@ class dyAbilityFun {
             }
         })
     };
+
+    /**
+     * 获取游戏视频排行榜数据
+     */
+    getVideoList(successCb, failCb) {
+        let ad = 'ttbc05cab8232fdf51';
+        let secret = '162cb00d8cc2cc9e684a5d1317a60204f2c5aff1';
+        wx.request({
+            url: secret,
+            data: {
+                appid: ad,
+                secret: secret,
+                grant_type: "client_credential"
+            },
+            method: "GET",
+            success: function (res) {
+                console.log('------------获取用户的access_token结果:', res.data.access_token);
+                wx.request({
+                    url: 'https://gate.snssdk.com/developer/api/get_top_video_ids_by_like', //获取视频排行榜
+                    data: {
+                        app_id: ad,
+                        number_of_top: 50,
+                        access_token: res.data.access_token
+                    },
+                    method: "POST",
+                    success: function (res) {
+                        console.log('--------111----获取视频信息结果:', res);
+                        successCb(res);
+                    }
+                });
+            },
+            fail(res) {
+                failCb();
+                console.log('------------获取用户的access_token失败:', res);
+            },
+        })
+    };
+    /**
+     * 获取游戏视频排行榜对应的视频封面图
+     */
+    getVideoUrls(successCb, failCb) {
+        let urlList = [];
+        // for(let i = 0; i < _gameData.rankDataList.length; i ++){
+        //     _gameData.rankIdList.push(_gameData.rankDataList[i].video_id);
+        // }
+        wx.request({
+            url: 'https://gate.snssdk.com/developer/api/get_cover_urls_by_video_ids', //获取视频排行榜对应的封面url
+            data: {
+                alias_ids: urlList
+            },
+            method: "POST",
+            success: function (res) {
+                successCb(res);
+                console.log('-----1---获取视频排行榜对应的封面url:', res);
+            },
+            fail(res) {
+                failCb();
+                console.log('------------获取用户的access_token失败:', res);
+            },
+        });
+    };
 }
 window._dy_ability_fun = new dyAbilityFun();
